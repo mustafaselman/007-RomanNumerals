@@ -3,10 +3,13 @@ let convertNumberToRoman = document.querySelector("#convertNumberToRoman")
 let displayRoman = document.querySelector(".displayRoman")
 let div=document.createElement("div")
 
-
-
 console.log(inputNumber.value)
+
+
 convertNumberToRoman.onclick = romanize(inputNumber.value)
+//BURADA BİR TÜRLÜ ONCLİCK İŞLEMİNİ GERÇEKLEŞTİREMEDİM NEREDE HATA YAPIYORUM 
+
+
 console.log(romanize("1234"))
 
 function romanize(num)
