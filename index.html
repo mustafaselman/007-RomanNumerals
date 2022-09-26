@@ -17,11 +17,18 @@
                         <form id = "todo-form" name="form">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input class="" type="text" name="" id = "" placeholder="Enter a Number">
-                                    <button type="submit" class="btn btn-success">Convert</button>
+                                    <input class="" type="text" name="" id = "number" placeholder="Enter a Number">
+                                    <button type="submit" class="btn btn-success" id="convertNumberToRoman">Convert</button>
+                                    
+                                    <script src="romanNumerals.js">
+                                        let number = document.getElementById("number").value
+                                        document.getElementById("convertNumberToRoman").onclick = romanize(number)
+                                        document.write("mustafa")
+                                    </script>
                             </div>
                             </div>
                             a();
+                            
                         </form>
                         <hr>
                         

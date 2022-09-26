@@ -1,26 +1,133 @@
-function romanize (num) {
-    if (!+num) return false;
-    var digits = String(+num).split('');
-    var key = ['','C','CC','CCC','CD','D','DC','DCC','DCCC','CM',
-               '','X','XX','XXX','XL','L','LX','LXX','LXXX','XC',
-               '','I','II','III','IV','V','VI','VII','VIII','IX'];
-    var roman = '', i = 3;
-    while (i--) roman = (key[+digits.pop() + (i * 10)] || '') + roman;
-    return Array(+digits.join('') + 1).join('M') + roman;
+
+  function romanize(num) {
+    if (parseInt(num)) {
+      let digits = Number(num);
+      let roman ="";
+      while (digits>=1000){
+        digits = digits - 1000;
+        roman = roman + "M";
+      }
+      while (digits>=900) {
+        digits = digits - 900
+        roman = roman + "CM"
+      }
+      while (digits>=500) {
+        digits = digits - 500
+        roman = roman + "D"
+      }
+      while (digits>=400) {
+        digits = digits - 400
+        roman = roman + "CD"
+      }
+      while (digits>=100) {
+        digits = digits - 100
+        roman = roman + "C"
+      }
+      while (digits>=90) {
+        digits = digits - 90
+        roman = roman + "XC"
+      }
+      while (digits>=50) {
+        digits = digits - 50
+        roman = roman + "L"
+      }
+      while (digits>=40) {
+        digits = digits - 40
+        roman = roman + "XL"
+      }
+      while (digits>=10) {
+        digits = digits - 10
+        roman = roman + "X"
+      }
+      while (digits>=9) {
+        digits = digits - 9
+        roman = roman + "IX"
+      }
+      while (digits>=5) {
+        digits = digits - 5
+        roman = roman + "V"
+      }
+      while (digits>=4) {
+        digits = digits - 4
+        roman = roman + "IV"
+      }
+      while (digits>=1) {
+        digits = digits - 1
+        roman = roman + "I"
+      }
+      document.write(roman)
+      return roman
+     
+    }
   }
   
-  function deromanize (str) {
-    var str = str.toUpperCase();
-    var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
-    var token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g;
-    var key = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
-    var num = 0, m;
-    if (!(str && validator.test(str))) return false;
-    while (m = token.exec(str)) num += key[m[0]];
-    return num;
+ function deromanize(roman) {
+  
+  if (String(roman)) {
+    let romanSplit = String(roman).split("");
+    let digits = 0;
+  
+    while (romanSplit[0] == "M"){
+      digits = digits + 1000;
+      romanSplit.shift();
+    }
+    while (romanSplit[0] == "C" && romanSplit[1] == "M") {
+      digits = digits + 900
+      romanSplit.shift();
+      romanSplit.shift();
+    }
+    while (romanSplit[0] == "D") {
+      digits = digits + 500
+      romanSplit.shift();
+    }
+    while (romanSplit[0] == "C" && romanSplit[1] == "D") {
+      digits = digits + 400
+      romanSplit.shift();
+      romanSplit.shift();    
+    }
+    while (romanSplit[0] == "C") {
+      digits = digits + 100
+      romanSplit.shift();   
+    }
+    while (romanSplit[0] == "X" && romanSplit[1] == "C") {
+      digits = digits + 90
+      romanSplit.shift();  
+      romanSplit.shift();  
+    }
+    while (romanSplit[0] == "L") {
+      digits = digits + 50
+      romanSplit.shift();    
+    }
+    while (romanSplit[0] == "X" && romanSplit[1] == "L") {
+      digits = digits + 40
+      romanSplit.shift();
+      romanSplit.shift();
+    }
+    while (romanSplit[0] == "X") {
+      digits = digits + 10
+      romanSplit.shift();    
+    }
+    while (romanSplit[0] == "I" && romanSplit[1] == "X") {
+      digits = digits + 9
+      romanSplit.shift(); 
+      romanSplit.shift();   
+    }
+    while (romanSplit[0] == "V") {
+      digits = digits + 5
+      romanSplit.shift();
+     
+    }
+    while (romanSplit[0] == "I" && romanSplit[1] == "V") {
+      digits = digits + 4
+      romanSplit.shift();
+      romanSplit.shift();
+         
+    }
+    while (romanSplit[0] == "I") {
+      digits = digits + 1
+      romanSplit.shift();    
+    }
+  
+  document.write(digits)
   }
-  function a() {
-    var a = -5
-    return String("mmmm").split('');
-  }
-  console.log(romanize(44744));
+}
