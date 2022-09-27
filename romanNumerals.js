@@ -3,18 +3,11 @@ let convertNumberToRoman = document.querySelector("#convertNumberToRoman")
 let displayRoman = document.querySelector(".displayRoman")
 let div=document.createElement("div")
 
-console.log(inputNumber.value)
-
-
-convertNumberToRoman.onclick = romanize(inputNumber.value)
-//BURADA BİR TÜRLÜ ONCLİCK İŞLEMİNİ GERÇEKLEŞTİREMEDİM NEREDE HATA YAPIYORUM 
-
-
-console.log(romanize("1234"))
+convertNumberToRoman.addEventListener("click",()=> {romanize(inputNumber.value)})
 
 function romanize(num)
 {
- 
+  
   if (parseInt(num))
   {
     let digits = Number(num);
@@ -85,11 +78,9 @@ function romanize(num)
       roman = roman + "I"
     }
     div.innerHTML = roman
-    console.log(div.innerHTML)
-    console.log(roman)
-    displayRoman.appendChild(div)
-    convertNumberToRoman.onclick = romanize(inputNumber)
-
+    displayRoman.appendChild(roman)
+    console.log(digits)
+    roman.preventDefault();
   }
 }
 function deromanize(roman)
