@@ -1,13 +1,25 @@
 let inputNumber = document.querySelector("#inputNumber")
 let convertNumberToRoman = document.querySelector("#convertNumberToRoman")
 let displayRoman = document.querySelector(".displayRoman")
-let div=document.createElement("div")
+let toDoForm = document.querySelector("#todo-form")
 
-convertNumberToRoman.addEventListener("click",()=> {romanize(inputNumber.value)})
-
-function romanize(num)
-{
+inputNumber.addEventListener("change",(e) => {
+//   console.log(e.target.value)
+  romanize(inputNumber.value)
+  e.preventDefault();
+})
+// toDoForm.addEventListener("submit",(e)=> {
+//   console.log(e.target)
+//   console.log(inputNumber.value)
+//   romanize(inputNumber.value)
   
+//   e.preventDefault();
+ 
+
+// })
+
+
+ function romanize(num){
   if (parseInt(num))
   {
     let digits = Number(num);
@@ -77,12 +89,20 @@ function romanize(num)
       digits = digits - 1
       roman = roman + "I"
     }
-    div.innerHTML = roman
-    displayRoman.appendChild(roman)
-    console.log(digits)
-    roman.preventDefault();
-  }
+    displayRoman.innerText = roman
+ }
+    
+    
 }
+// {
+  
+  
+//     div.innerHTML = roman
+//     displayRoman.appendChild(roman)
+//     console.log(digits)
+    
+//   }
+// }
 function deromanize(roman)
 {
 
@@ -165,6 +185,6 @@ function deromanize(roman)
       romanSplit.shift();
     }
 
-    document.write(digits)
+    //document.write(digits)
   }
 }
