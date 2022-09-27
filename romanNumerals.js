@@ -1,23 +1,24 @@
 let inputNumber = document.querySelector("#inputNumber")
+let inputRomanNumber = document.querySelector("#inputRomanNumber")
 let convertNumberToRoman = document.querySelector("#convertNumberToRoman")
 let displayRoman = document.querySelector(".displayRoman")
 let toDoForm = document.querySelector("#todo-form")
+let displayNumber = document.querySelector(".displayNumber")
+let toDoForm2 = document.querySelector("#todo-form2")
 
-inputNumber.addEventListener("change",(e) => {
-//   console.log(e.target.value)
+toDoForm.addEventListener("submit",(e)=> {
+  
   romanize(inputNumber.value)
   e.preventDefault();
-})
-// toDoForm.addEventListener("submit",(e)=> {
-//   console.log(e.target)
-//   console.log(inputNumber.value)
-//   romanize(inputNumber.value)
   
-//   e.preventDefault();
- 
+})
 
-// })
+toDoForm2.addEventListener("submit",(e)=> {
+  
+  deromanize(inputRomanNumber.value)
+  e.preventDefault();
 
+})
 
  function romanize(num){
   if (parseInt(num))
@@ -94,15 +95,7 @@ inputNumber.addEventListener("change",(e) => {
     
     
 }
-// {
-  
-  
-//     div.innerHTML = roman
-//     displayRoman.appendChild(roman)
-//     console.log(digits)
-    
-//   }
-// }
+
 function deromanize(roman)
 {
 
@@ -185,6 +178,6 @@ function deromanize(roman)
       romanSplit.shift();
     }
 
-    //document.write(digits)
+    displayNumber.innerText = digits;
   }
 }
